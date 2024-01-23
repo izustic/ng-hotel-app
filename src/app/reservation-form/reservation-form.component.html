@@ -1,0 +1,44 @@
+<app-home></app-home>
+
+<form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+  <div class="row mb-3">
+    <div class="col">
+      <label class="form-label" for="">Check-In Date: </label>
+      <input class="form-control" type="date" formControlName="checkInDate"/>
+      <small *ngIf="reservationForm.get('checkInDate')?.invalid && reservationForm.get('checkInDate')?.touched" class="input_error">
+        Check-In Date is required
+      </small>
+    </div>
+    <div class="col">
+      <label class="form-label" for="">Check-Out Date: </label>
+      <input class="form-control" type="date" formControlName="checkOutDate"/>
+      <small *ngIf="reservationForm.get('checkOutDate')?.invalid && reservationForm.get('checkOutDate')?.touched" class="input_error">
+        Check-Out Date is required
+      </small>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col">
+      <label class="form-label" for="">Guest Name: </label>
+      <input class="form-control" type="text" formControlName="guestName"/>
+      <small *ngIf="reservationForm.get('guestName')?.invalid && reservationForm.get('guestName')?.touched" class="input_error">
+        Guest Name is required
+      </small>
+    </div>
+    <div class="col">
+      <label class="form-label" for="">Guest Email: </label>
+      <input class="form-control" type="email" formControlName="guestEmail"/>
+      <small *ngIf="reservationForm.get('guestEmail')?.invalid && reservationForm.get('guestEmail')?.touched" class="input_error">
+        Guest Email is required
+      </small>
+    </div>
+  </div>
+  <div  class="mb-3">
+    <label class="form-label" for="">Room Number: </label>
+    <input class="form-control" type="number" formControlName="roomNumber"/>
+    <small *ngIf="reservationForm.get('roomNumber')?.invalid && reservationForm.get('roomNumber')?.touched" class="input_error">
+      Room Number is required
+    </small>
+  </div>
+  <button class="btn btn-primary" type="submit" [disabled]="reservationForm.invalid">Submit</button>
+</form>
